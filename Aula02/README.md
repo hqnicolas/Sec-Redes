@@ -142,3 +142,21 @@ Firewalls e antivírus trabalham em conjunto para fornecer uma defesa abrangente
 Três princípios fundamentais: Segurança por Design, Defesa em Profundidade e Mínimo Privilégio.
 
 ---
+---
+### Resumo dos Princípios de Segurança
+
+* **Segurança por Design**: Garante que a segurança seja considerada fundamental desde o início do desenvolvimento.
+* **Defesa em Profundidade**: Cria várias camadas de proteção para barrar potenciais ameaças.
+* **Mínimo Privilégio**: Limita o acesso de usuários para diminuir a superfície de ataque.
+
+A integração desses princípios forma uma estratégia de segurança forte e completa, criando uma base sólida para a proteção de sistemas e dados.
+
+---
+
+### ISO/IEC 27001
+
+* **1. Gestão de Riscos**: A norma fornece uma estrutura detalhada para identificar, avaliar e tratar os riscos de segurança da informação de uma organização.
+* **2. Melhoria Contínua**: Incentiva a implementação de um **Sistema de Gestão de Segurança da Informação (SGSI)**, que promove a melhoria constante dos controles e processos.
+* **3. Certificação Internacional**: A certificação ISO/IEC 27001 é reconhecida globalmente e demonstra o compromisso da organização com a segurança da informação.
+* **4. Abordagem Abrangente**: A norma cobre uma grande variedade de controles de segurança, desde a gestão de riscos até a conscientização dos colaboradores.
+
