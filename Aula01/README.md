@@ -1,4 +1,4 @@
-# Boas práticas para implementação do TLP
+# [Boas práticas para implementação do TLP](https://github.com/hqnicolas/Seguran-a-em-Redes/blob/main/Aula01/Aula01.pdf)
 
 ## Definir Políticas
 - Desenvolver políticas claras sobre o uso do TLP, incluindo responsabilidades e procedimentos.
