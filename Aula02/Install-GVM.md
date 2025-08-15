@@ -1,4 +1,4 @@
-````
+
 ### Instalação do GVM – Greenbone Vulnerability Management
 
 #### Instalação ####
@@ -7,10 +7,10 @@
 
 ### Atualize e instale o GVM ###
 
-```bash
+```
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y gvm
-````
+```
 
 -----
 
