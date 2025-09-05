@@ -4,7 +4,8 @@ Repositório de "Olá mundo" de Segurança em Redes
 
 ---
 
-- [Aula01](https://github.com/hqnicolas/Sec-Redes/tree/main/Aula01) Boas práticas para implementação do TLP
-- [Aula02](https://github.com/hqnicolas/Sec-Redes/tree/main/Aula02) Introdução à Segurança da Informação
-- [AulaGVM](https://github.com/hqnicolas/Sec-Redes/blob/main/Aula02/Install-GVM.md) Instalação do GVM – Greenbone Vulnerability Management
-- [Aula03](https://github.com/hqnicolas/Sec-Redes/blob/main/Aula03/README.md) Man in the middle
+- [Aula01](/Aula01) Boas práticas para implementação do TLP
+- [Aula02](/Aula02) Introdução à Segurança da Informação
+- [AulaGVM](/Aula02) Instalação do GVM – Greenbone Vulnerability Management
+- [Aula03](/Aula03) Man in the middle
+- [Aula04](/Aula04) Controles de Segurança e Gestão de Acessos (windows)
