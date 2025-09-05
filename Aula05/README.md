@@ -1,173 +1,221 @@
-# 🕵️‍♂️ Steghide: Guia Completo para Esteganografia
+# 📖 Criptografia
 
-Bem-vindo ao guia completo do **Steghide**, uma poderosa ferramenta de esteganografia que permite esconder dados secretos em diversos tipos de arquivos de imagem e áudio. Com este tutorial, você aprenderá a instalar e utilizar o Steghide em ambientes Linux e Windows para proteger suas informações.
+## 🎯 Objetivos
 
-## Índice
+- Distinguir entre **criptografia simétrica** e **assimétrica**, explorando seus pontos fortes e fracos.
+- Realizar práticas com **OpenSSL**.
 
-  - [O que é Esteganografia?](https://www.google.com/search?q=%23o-que-%C3%A9-esteganografia)
-  - [Como o Steghide Funciona?](https://www.google.com/search?q=%23como-o-steghide-funciona)
-  - [Instalação](https://www.google.com/search?q=%23instala%C3%A7%C3%A3o)
-      - [🐧 Linux (Debian/Ubuntu)](https://www.google.com/search?q=%23-linux-debianubuntu)
-      - [💻 Windows](https://www.google.com/search?q=%23-windows)
-  - [Como Usar o Steghide](https://www.google.com/search?q=%23como-usar-o-steghide)
-      - [Escondendo uma Mensagem (Embed)](https://www.google.com/search?q=%23escondendo-uma-mensagem-embed)
-      - [Extraindo uma Mensagem (Extract)](https://www.google.com/search?q=%23extraindo-uma-mensagem-extract)
-  - [Verificando a Integridade dos Arquivos](https://www.google.com/search?q=%23verificando-a-integridade-dos-arquivos)
-  - [Exemplo Prático](https://www.google.com/search?q=%23exemplo-pr%C3%A1tico)
-  - [Comandos Úteis](https://www.google.com/search?q=%23comandos-%C3%BAteis)
+---
 
-## O que é Esteganografia?
+## 🔒 Objetivos da Criptografia
 
-Esteganografia é a arte e a ciência de escrever mensagens ocultas de tal forma que ninguém, além do remetente e do destinatário, suspeite da existência da mensagem. Diferente da criptografia, que oculta o *conteúdo* de uma mensagem, a esteganografia oculta a *própria existência* da mensagem.
+### 🤫 Confidencialidade
+Garantir que apenas pessoas autorizadas possam acessar as informações.
 
-## Como o Steghide Funciona?
+### 🛡️ Integridade
+Assegurar que as informações não sejam alteradas durante a transmissão ou armazenamento.
 
-O Steghide utiliza técnicas avançadas para embutir dados em arquivos de imagem (como JPEG, BMP, PNG) ou áudio (WAV, AU), alterando os pixels ou amostras de áudio de forma imperceptível ao olho ou ouvido humano. Ele também criptografa os dados antes de embuti-los para uma camada extra de segurança.
+### 🌐 Disponibilidade
+Garantir que as informações estejam acessíveis quando necessário para usuários autorizados.
 
-## Instalação
+---
 
-### 🐧 Linux (Debian/Ubuntu)
+## 📜 Criptografia na Antiguidade
 
-A instalação no Linux é simples e pode ser feita através do gerenciador de pacotes `apt`.
+### 🏺 400 a.C. - Escítala Espartana
+Utilizada por espartanos para enviar mensagens cifradas usando um bastão e uma tira de couro. Esse método é um dos primeiros exemplos documentados de **criptografia de transposição**, onde a ordem das letras é modificada para ocultar a mensagem original.
 
-```bash
-# Atualize a lista de pacotes
-sudo apt-get update
+### 🏛️ 50 a.C. - Cifra de César
 
-# Instale o Steghide
-sudo apt-get install steghide -y
-```
+- **Utilização:** Um dos primeiros métodos de criptografia substitutiva, utilizado por Júlio César para proteger comunicações militares.
+- **Método:** Substituição de cada letra do alfabeto por outra que se encontrava três posições à frente.
+- **Exemplo:** `"Seguranca em Redes"` se torna `"Vhjxudqfd hp Uhghv"`.
 
-### 💻 Windows
+---
 
-Para o Windows, é necessário baixar o executável e, opcionalmente, adicioná-lo ao PATH do sistema para facilitar o uso.
+## 📜 Cifra de Vigenère (1586)
 
-1.  **Baixe o Steghide:**
-    Faça o download da versão mais recente no [SourceForge](https://sourceforge.net/projects/steghide/files/latest/download).
+1.  **Desenvolvimento:** Criada pelo diplomata francês Blaise de Vigenère.
+2.  **Características:** Cifra polialfabética que utiliza uma **palavra-chave** para cifrar e decifrar mensagens.
+3.  **Inovação:** Ao contrário da Cifra de César, o deslocamento das letras varia com base na sequência determinada pela palavra-chave.
 
-2.  **Extraia os arquivos:**
-    Descompacte o arquivo `.zip` em uma pasta de sua preferência (por exemplo, `C:\Program Files\steghide`).
+### 🛠️ Funcionamento da Cifra de Vigenère
 
-3.  **Adicione ao PATH (Opcional, mas recomendado):**
+- **Quadrado de Vigenère:** Utiliza uma tabela com as 26 letras do alfabeto, onde cada linha representa um deslocamento de uma letra em relação à anterior.
+- **Processo de Cifragem:** Combina a letra do texto claro com a letra correspondente da palavra-chave.
+- **Repetição:** O processo é repetido para cada letra subsequente, reiniciando a palavra-chave quando necessário.
 
-      * Pesquise por "Variáveis de ambiente" no menu Iniciar.
-      * Clique em "Variáveis de Ambiente...".
-      * Na seção "Variáveis do sistema", encontre e selecione a variável `Path` e clique em "Editar".
-      * Clique em "Novo" e adicione o caminho para a pasta onde você extraiu o `steghide.exe` (ex: `C:\Program Files\steghide\bin`).
-      * Clique em "OK" em todas as janelas para salvar.
+> Para uma demonstração prática, acesse: [Cifra de Vigenère na Prática](https://cifradevigenere.vercel.app/artigo#cifra-de-vigenere-na-pratica)
 
-    Se não adicionar ao PATH, você precisará navegar até o diretório do Steghide via terminal ou usar o caminho completo do executável (`C:\path\to\steghide.exe`) em todos os comandos.
+### 🌍 Significado Histórico
 
-## Como Usar o Steghide
+- **Comunicações Militares:** Proteção de informações estratégicas em conflitos.
+- **Fundamentos para o Futuro:** Base para o desenvolvimento de técnicas modernas de criptografia.
+- **Cultura e Religião:** Preservação de conhecimentos sagrados e culturais.
 
-O uso básico do Steghide envolve dois processos principais: embutir (esconder) e extrair dados.
+---
 
-### Escondendo uma Mensagem (Embed)
+## 📜 Cilindro de Jefferson (1795)
 
-Para esconder um arquivo de texto (`mensagem_secreta.txt`) dentro de uma imagem (`imagem_original.jpg`):
+Inventado por Thomas Jefferson, é um dispositivo mecânico para cifragem e decifragem de mensagens.
 
-  - `-cf` (cover file): O arquivo que será usado para esconder a mensagem.
-  - `-ef` (embed file): O arquivo com a mensagem que você quer esconder.
-  - `-p`: Solicita uma senha (passphrase) para proteger os dados.
+- **Composição:** 36 discos rotativos, cada um com as 26 letras do alfabeto dispostas aleatoriamente.
+- **Montagem:** Os discos são montados em um eixo, e a ordem pode ser ajustada para uma configuração específica (a chave).
 
-**Comando:**
+### 🛠️ Funcionamento do Cilindro
 
-```bash
-steghide embed -cf imagem_original.jpg -ef mensagem_secreta.txt
-```
+1.  **Configuração da Chave:** Os discos são ajustados de acordo com uma ordem predeterminada.
+2.  **Criptografando:** A mensagem clara é alinhada em uma linha. Uma linha diferente de caracteres é lida como a mensagem cifrada.
+3.  **Decifrando:** O processo é revertido, usando a mesma configuração de discos e procurando a linha que contém uma mensagem que faça sentido.
 
-O Steghide solicitará uma senha. **Guarde-a bem\!** Sem ela, será impossível extrair os dados. Após o processo, uma nova imagem (ou a original modificada, dependendo da versão) será criada. Para evitar sobrescrever a original, você pode especificar um novo nome de arquivo com o parâmetro `-sf`.
+---
 
-```bash
-steghide embed -cf imagem_original.jpg -ef mensagem_secreta.txt -sf imagem_modificada.jpg
-```
+## ⚙️ A Era das Máquinas
 
-### Extraindo uma Mensagem (Extract)
+### 🇩🇪 Máquina Enigma (1918-1920s)
 
-Para extrair a mensagem escondida de uma imagem (`imagem_modificada.jpg`):
+Desenvolvida por Arthur Scherbius, a Enigma foi uma invenção revolucionária. Inicialmente comercial, foi amplamente adotada pelo exército alemão na Segunda Guerra Mundial.
 
-  - `-sf` (stego file): O arquivo que contém a mensagem oculta.
+- **Componentes:**
+  - **Rotores (3 a 5):** Cada rotor continha um alfabeto completo e girava a cada tecla pressionada, alterando a substituição das letras.
+  - **Painel de Conectores:** Permutava pares de letras, aumentando a complexidade da cifra.
+- **Decifragem:** A máquina receptora precisava ter a mesma configuração de rotores, posições iniciais e painel de conectores.
 
-**Comando:**
+#### 💣 Bombe
+O centro de criptoanálise britânico de **Bletchley Park**, liderado por figuras como **Alan Turing**, foi responsável pela quebra das cifras da Enigma. Utilizando técnicas matemáticas e uma máquina chamada **Bombe**, os criptoanalistas conseguiram decifrar mensagens alemãs, o que é considerado um fator que encurtou a guerra em vários anos e salvou inúmeras vidas.
 
-```bash
-steghide extract -sf imagem_modificada.jpg
-```
+### 🇩🇪 Máquina Lorenz (1941)
 
-Você precisará fornecer a mesma senha que usou para embutir os dados. O arquivo (`mensagem_secreta.txt`) será extraído no mesmo diretório.
+Utilizada pelo exército alemão para comunicações de alto nível, como as enviadas entre Hitler e seus comandantes. Era mais complexa que a Enigma, utilizando 12 rotores.
 
-## Verificando a Integridade dos Arquivos
+#### 💻 Decifragem da Lorenz
+Para decifrar as mensagens da Lorenz, os criptoanalistas de Bletchley Park desenvolveram o **Colossus**, considerado o primeiro computador eletrônico digital programável do mundo. O Colossus utilizava técnicas de criptoanálise estatística para identificar padrões nas cifras de fluxo da Lorenz.
 
-É uma boa prática verificar se a imagem original e a modificada são diferentes. Para isso, você pode gerar um hash criptográfico (como SHA256) para cada uma delas.
+---
 
-#### 🐧 Linux
+## 💻 Criptografia Digital
 
-```bash
-sha256sum imagem_original.jpg
-sha256sum imagem_modificada.jpg
-```
+### 📦 Cifras de Bloco
+Algoritmos que transformam dados em blocos de tamanho fixo. Cada bloco é cifrado individualmente por meio de uma chave secreta.
 
-#### 💻 Windows (usando o `certutil`)
+#### **DES (Data Encryption Standard)**
+Desenvolvido pela IBM e adotado como padrão pelo governo dos EUA em 1977. Com uma chave de 56 bits, tornou-se vulnerável a ataques de força bruta e foi oficialmente substituído pelo AES em 1999.
 
-```powershell
-certutil -hashfile imagem_original.jpg SHA256
-certutil -hashfile imagem_modificada.jpg SHA256
-```
+#### **AES (Advanced Encryption Standard)**
+1.  **Sucessor do DES:** Tornou-se o novo padrão de criptografia do governo dos EUA em 2001.
+2.  **Tamanhos de Chave Flexíveis:** Oferece opções de **128, 192 ou 256 bits**, proporcionando diferentes níveis de segurança.
+3.  **Amplamente Utilizado:** Padrão em aplicações modernas como criptografia de discos, comunicações sem fio e proteção de dados em bancos de dados.
 
-Os hashes devem ser diferentes, confirmando que a imagem foi alterada para incluir os dados ocultos.
+### 🌊 Cifras de Fluxo
+Geram um fluxo pseudoaleatório de bits que é combinado com os dados a serem cifrados (usando uma operação XOR, por exemplo).
 
-## Exemplo Prático
+- **Exemplo:** O **RC4** é um dos exemplos mais conhecidos, embora hoje seja considerado inseguro. Era usado em protocolos como SSL e WEP.
 
-Vamos simular um cenário completo no Windows.
+---
 
-1.  **Crie os arquivos:**
+## 🔑 Criptografia de Chave Pública
 
-      * Tenha uma imagem chamada `gato.jpg`.
-      * Crie um arquivo de texto chamado `segredo.txt` com a mensagem: "Encontro ao meio-dia na praça."
+Introduzida por Whitfield Diffie e Martin Hellman, utiliza duas chaves distintas: uma **chave pública** para cifrar e uma **chave privada** para decifrar.
 
-2.  **Navegue até a pasta:**
-    Abra o terminal (CMD ou PowerShell) e vá para a pasta onde estão os seus arquivos.
+### **RSA (Rivest-Shamir-Adleman)**
+- **Criadores:** Desenvolvido por Ron Rivest, Adi Shamir e Leonard Adleman em 1977.
+- **Chaves:** Utiliza um par de chaves: uma pública (compartilhada livremente) e uma privada (mantida em segredo).
+- **Segurança:** Baseia-se na dificuldade matemática de fatorar grandes números primos.
+- **Aplicações:** Assinatura digital, segurança de comunicação (TLS/SSL) e autenticação de usuários.
 
-3.  **Esconda a mensagem:**
+### **ECC (Criptografia de Curvas Elípticas)**
+- **Matemática Avançada:** Baseia-se em propriedades complexas de curvas elípticas.
+- **Segurança Aprimorada:** Oferece níveis de segurança comparáveis ao RSA, mas com **chaves menores**, tornando-a ideal para dispositivos com recursos limitados (como smartphones e IoT).
+- **Eficiência:** Para atingir a segurança de uma chave RSA de 2048 bits, a ECC necessita apenas de uma chave de 224 bits.
+- **Aplicações:** Criptografia de dispositivos móveis, autenticação de sites e transações financeiras seguras.
 
-    ```bash
-    # Lembre-se de usar "steghide.exe" se não estiver no PATH
-    steghide embed -cf gato.jpg -ef segredo.txt -sf gato_com_segredo.jpg
-    ```
+---
 
-    Digite uma senha segura quando solicitado.
+## ⚛️ O Futuro: Criptografia Pós-Quântica
 
-4.  **Verifique a diferença (opcional):**
+A computação quântica tem o potencial de quebrar muitos dos sistemas de criptografia atuais (como RSA e ECC) ao resolver problemas matemáticos complexos de forma muito mais rápida.
 
-    ```powershell
-    certutil -hashfile gato.jpg SHA256
-    certutil -hashfile gato_com_segredo.jpg SHA256
-    ```
+**Criptografia Pós-Quântica (PQC)** refere-se a algoritmos criptográficos que são seguros contra ataques de computadores quânticos.
 
-5.  **Extraia a mensagem (em outro local, para simular o recebimento):**
-    Imagine que você enviou `gato_com_segredo.jpg` para um amigo. Ele faria o seguinte:
+### Algoritmos Padrão (NIST PQC Standardization)
+| Algoritmo | Baseado em | Uso Principal |
+| :--- | :--- | :--- |
+| **CRYSTALS-Kyber** | Redes (Lattices) | Troca de Chaves |
+| **FALCON** | Redes (Lattices) | Assinaturas Digitais |
+| **SPHINCS+** | Funções de Hash | Assinaturas Digitais |
 
-    ```bash
-    steghide extract -sf gato_com_segredo.jpg
-    ```
+> **Nota:** Muitos desses algoritmos estão em fase avançada de padronização, mas a implementação em larga escala ainda está em andamento.
 
-    Após digitar a senha correta, o arquivo `segredo.txt` aparecerá na pasta.
+---
 
-## Comandos Úteis
+## 🔄 Criptografia Simétrica vs. Assimétrica
 
-  - **Ver informações sobre um arquivo stego:**
-    ```bash
-    steghide info imagem_modificada.jpg
-    ```
-  - **Usar um nível de compressão (1 a 9):**
-    ```bash
-    steghide embed -cf imagem.jpg -ef segredo.txt -z 9
-    ```
-  - **Não criptografar os dados (não recomendado):**
-    ```bash
-    steghide embed -cf imagem.jpg -ef segredo.txt -e none
-    ```
+###  Symmetric Criptografia Simétrica
+Método de cifragem onde a **mesma chave** é utilizada tanto para cifrar quanto para decifrar a informação.
 
------
+- **Funcionamento:**
+  - **Cifragem:** `Texto Claro + Chave Secreta -> Texto Cifrado`
+  - **Decifragem:** `Texto Cifrado + Mesma Chave Secreta -> Texto Claro`
 
-*Este guia foi criado para fins educacionais. Use a esteganografia de forma responsável.*
+#### Algoritmos Comuns
+| Algoritmo | Descrição | Tamanho da Chave |
+| :--- | :--- | :--- |
+| **AES** | Padrão moderno e seguro. | 128, 192, 256 bits |
+| **DES** | Antigo e inseguro. | 56 bits |
+| **3DES** | Aplica o DES três vezes, mais seguro que o DES mas lento. | 168 bits efetivos |
+
+#### 👍 Vantagens
+- **Rapidez:** Muito mais rápido que a criptografia assimétrica. Ideal para grandes volumes de dados.
+- **Eficiência:** Requer menos poder computacional.
+
+#### 👎 Desvantagens
+- **Distribuição de Chaves:** O maior desafio é compartilhar a chave secreta de forma segura.
+- **Escalabilidade:** Em uma rede com *n* usuários, são necessárias `n(n-1)/2` chaves para comunicação par a par.
+- **Gerenciamento de Chaves:** Complexo em grandes redes.
+
+#### 💼 Usabilidade
+- **Comunicações Internas:** Redes corporativas, Wi-Fi (WPA2/3).
+- **Criptografia de Disco/Arquivos:** BitLocker, FileVault.
+
+### 👥 Criptografia Assimétrica
+Utiliza um par de chaves matematicamente relacionadas: uma **chave pública** para cifrar e uma **chave privada** para decifrar.
+
+- **Funcionamento:**
+  - A chave pública pode ser distribuída livremente.
+  - A chave privada deve ser mantida em segredo absoluto pelo proprietário.
+
+#### Algoritmos Comuns
+| Algoritmo | Descrição |
+| :--- | :--- |
+| **RSA** | Baseado na dificuldade de fatorar números primos. |
+| **DSA** | Usado para assinaturas digitais. |
+| **ECC** | Baseado em curvas elípticas, mais eficiente que o RSA. |
+
+#### 👍 Vantagens
+- **Distribuição de Chaves Segura:** Resolve o problema da distribuição de chaves da criptografia simétrica.
+- **Autenticação e Assinatura Digital:** Permite verificar a identidade do remetente e a integridade da mensagem.
+- **Escalabilidade:** Mais fácil de gerenciar em sistemas com muitos usuários.
+
+#### 👎 Desvantagens
+- **Desempenho:** É computacionalmente mais intensiva e muito mais lenta que a simétrica.
+- **Complexidade:** Requer maior poder de processamento.
+
+#### 💼 Usabilidade
+- **Troca de Chaves:** Usada para estabelecer um canal seguro e trocar uma chave simétrica (ex: TLS/SSL).
+- **E-mails Seguros:** PGP (Pretty Good Privacy).
+- **Certificados Digitais:** Autenticação de websites.
+- **Assinaturas Digitais:** Garante autenticidade e integridade de documentos.
+
+---
+
+### 📊 Tabela Comparativa
+
+| Característica | Criptografia Simétrica | Criptografia Assimétrica |
+| :--- | :--- | :--- |
+| **Chaves** | Mesma chave para cifrar e decifrar | Chave pública para cifrar, privada para decifrar |
+| **Velocidade** | 🚀 Mais rápida | 🐢 Mais lenta |
+| **Complexidade** | Menor | Maior |
+| **Distribuição de Chaves**| Difícil e arriscada | Fácil e segura |
+| **Usabilidade** | Grandes volumes de dados (streaming, arquivos) | Troca de chaves, assinaturas, autenticação |
+| **Segurança** | Vulnerável se a chave for comprometida | Maior segurança devido à separação das chaves |
+| **Escalabilidade**| Menos escalável | Mais escalável |
