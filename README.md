@@ -10,3 +10,4 @@ Repositório de "Olá mundo" de Segurança em Redes
 - [Aula03](/Aula03) Man in the middle
 - [Aula04](/Aula04) Controle de Acesso windows
 - [Aula05](/Aula05) Criptografia e Esteganografia
+- [Aula06](/Aula06) Certificados e Assinaturas Digitais
