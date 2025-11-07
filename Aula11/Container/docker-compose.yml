@@ -1,0 +1,19 @@
+services:
+  ubuntu-ssh:
+    build: .
+    container_name: ubuntu_ssh_server
+    ports:
+      - "2222:22"           # Host:Container port mapping for SSH
+    restart: unless-stopped
+    environment:
+      - TZ=UTC
+    # Uncomment to persist SSH configs or data
+    # volumes:
+    #   - ./sshd_config:/etc/ssh/sshd_config
+    #   - ./data:/home/dockeruser
+    networks:
+      - ssh-network
+
+networks:
+  ssh-network:
+    driver: bridge

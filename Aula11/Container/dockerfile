@@ -1,0 +1,37 @@
+# Use Ubuntu 24.04 (Noble Numbat) base image
+FROM ubuntu:24.04
+
+# Prevent interactive prompts during build
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update system and install required packages
+RUN apt-get update && \
+    apt-get install -y \
+        openssh-server \
+        sudo \
+        ubuntu-desktop-minimal \
+        dbus-x11 \
+        x11-apps \
+        net-tools \
+        vim \
+        nano && \
+    rm -rf /var/lib/apt/lists/*
+
+# Create SSH run directory
+RUN mkdir /var/run/sshd
+
+# Create a non-root user with sudo access
+RUN useradd -m -s /bin/bash dockeruser && \
+    echo 'dockeruser:password' | chpasswd && \
+    adduser dockeruser sudo
+
+# Configure SSH to allow password authentication and root login (optional)
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config && \
+    echo "AllowUsers dockeruser" >> /etc/ssh/sshd_config
+
+# Expose SSH port
+EXPOSE 22
+
+# Default command to start SSH server
+CMD ["/usr/sbin/sshd", "-D"]
