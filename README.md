@@ -14,3 +14,6 @@ Repositório de "Olá mundo" de Segurança em Redes
 - [Aula07](/Aula07) Segurança em Redes Sem Fio
 - [Aula08](/Aula08) ACL (Access Control List)
 - [Aula09](/Aula09) Acesso Remoto
+- [Aula11](/Aula11) Hardening
+- [Aula11](/Aula11) Firewall
+
