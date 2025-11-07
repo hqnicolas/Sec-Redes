@@ -136,7 +136,3 @@ This project is open source and available under the [MIT License](LICENSE).
 - Default credentials are for **local development only** — change them before exposing the container to a network.
 
 ---
-
-**Author:** Your Name  
-**Version:** 1.0.0  
-**Last Updated:** November 2025
