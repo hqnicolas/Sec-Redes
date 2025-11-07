@@ -163,5 +163,3 @@ Esta tabela permite que os administradores de sistemas documentem facilmente o s
 | (L1) Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users' (MS only) (Automated) | [ ] |
 
 ---
-*engenharia de computação*
-*UNISATC*
