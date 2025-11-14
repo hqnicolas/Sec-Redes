@@ -16,4 +16,5 @@ Repositório de "Olá mundo" de Segurança em Redes
 - [Aula09](/Aula09) Acesso Remoto
 - [Aula11](/Aula11) Hardening
 - [Aula11](/Aula11) Firewall
+- [Aula12](/Aula12) Monitoramento de Ativos de TI
 
